@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pash
+spec:
+  selector:
+    matchLabels:
+      app: pash
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: pash
+    spec:
+      containers:
+        - name: pash
+          image: quay.io/jpetnik/pash:v1
+          ports:
+            - containerPort: 8501
