@@ -16,8 +16,17 @@ The manifest is uploaded here: `quay.io/jpetnik/pash:v1`
 podman run -d --rm -p 8501:8501 quay.io/jpetnik/pash:v1
 ```
 
-## Deploy into Red Hat OpenShift Cluster
+## Deploy into a Red Hat OpenShift Cluster
+
+Kustomize is used to change the configuration for different environments:
 
 ```bash
-oc apply -f deploy
+# replicas: 1; annotation env: dev
+oc apply -k deploy/overlays/dev
+
+# replicas: 2; annotation env: test
+oc apply -k deploy/overlays/test
+
+# replicas: 3; annotation env: prod
+oc apply -k deploy/overlays/prod
 ```

@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pash
+  labels:
+    app: pash
 spec:
   selector:
     matchLabels:
